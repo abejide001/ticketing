@@ -8,10 +8,10 @@ build:
   local:
     push: false
   artifacts:
-    - image: auth
+    - image: 127.0.0.1:32000/auth
       context: auth
       docker:
-        dockerfile: dockerfile
+        dockerfile: Dockerfile
       sync:
         manual:
           - src: 'src/**/*.ts'

@@ -4,6 +4,7 @@ metadata:
   name: auth-depl
 spec:
   replicas: 1
+  progressDeadlineSeconds: 300
   selector:
     matchLabels:
       app: auth
@@ -14,7 +15,7 @@ spec:
     spec:
       containers:
         - name: auth
-          image: auth
+          image: 127.0.0.1:32000/auth
 ---
 apiVersion: v1
 kind: Service
