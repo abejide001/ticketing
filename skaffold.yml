@@ -5,10 +5,12 @@ deploy:
     manifests:
       - ./infra/k8s/*
 build:
-  local:
-    push: false
+  # local:
+  #   push: false
+  googleCloudBuild:
+    projectId: plat-demo
   artifacts:
-    - image: 127.0.0.1:32000/auth
+    - image: gcr.io/plat-demo/auth
       context: auth
       docker:
         dockerfile: Dockerfile
