@@ -1,8 +1,8 @@
 import express from "express";
 import signin from "../controller/signin";
+import { userValidationRules, validateBody } from "../middlewares/validateSignup";
 
-const app = express();
 const router = express.Router()
-router.post("/api/users/signin", signin)
+router.post("/api/users/signin",  userValidationRules(), validateBody,  signin)
 
 export { router as signinRouter }

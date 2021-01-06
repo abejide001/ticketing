@@ -1,6 +1,7 @@
 
 const signout = (req: Express.Request, res: any): void => {
-    res.send("this")
+    req.session = null
+    res.send({})
 }
 
 export default signout

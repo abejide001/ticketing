@@ -6,10 +6,13 @@ const dbConfig = async () => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useCreateIndex: true,
+      useFindAndModify: false,
+      serverSelectionTimeoutMS: 20000,
+      connectTimeoutMS: 20000
     });
-    console.log("connected to mongo");
+    console.log("connected to mongodb");
   } catch (err) {
-    console.log(err);
+    console.log(err.message);
   }
 };
 export default dbConfig;
