@@ -4,8 +4,8 @@ import { sendFailureResponse, sendSuccessResponse } from "../utils/appResponse";
 
 const currentUser = (req: Request, res: Response) => {
   res.send({
-    currentUser: req.currentUser
-  })
+    currentUser: req.currentUser,
+  });
 };
 
 export default currentUser;
