@@ -1,6 +1,5 @@
 import jwt from 'jsonwebtoken';
 import { Password } from "./../utils/password";
-import bcrypt from 'bcrypt';
 import { Request } from "express";
 import User from "../models/User";
 import { sendFailureResponse, sendSuccessResponse } from "../utils/appResponse";
@@ -12,10 +11,10 @@ const signin = async (req: Request, res: any) => {
     sendFailureResponse(res, 400, "Incorrect email or password");
     return
   }
-//   const passwordMatch = await bcrypt.compare(password, user.password);
-//   if (!passwordMatch) {
-//     sendFailureResponse(res, 400, "Incorrect email or password");
-//   }
+  const passwordMatch = await Password.compare(user[0].password, password);
+  if (!passwordMatch) {
+    sendFailureResponse(res, 400, "Incorrect email or password");
+  }
   const userJwt = jwt.sign(
     {
       id: user.id,
@@ -23,7 +22,11 @@ const signin = async (req: Request, res: any) => {
     },
     process.env.JWT_KEY!
   );
-    sendSuccessResponse(res, 200, userJwt)
+  // Store it on session object
+  req.session = {
+    jwt: userJwt
+  };
+    sendSuccessResponse(res, 200, user)
 };
 
 export default signin;
