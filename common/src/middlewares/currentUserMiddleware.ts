@@ -14,7 +14,7 @@ declare global {
   }
 }
 
-const currentUserMiddleware = (
+export const currentUserMiddleware = (
   req: Request,
   res: Response,
   next: NextFunction
@@ -33,4 +33,3 @@ const currentUserMiddleware = (
 
   next();
 };
-export default currentUserMiddleware
