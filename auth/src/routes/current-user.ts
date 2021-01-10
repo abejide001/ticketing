@@ -1,7 +1,6 @@
+import { currentUserMiddleware } from '@ticketdev/common';
 import express from "express";
 import currentUser from "../controller/currentUser";
-import currentUserMiddleware from "../middlewares/currentUser";
-
 
 const app = express();
 const router = express.Router()
