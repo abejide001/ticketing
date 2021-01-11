@@ -26,3 +26,11 @@ build:
         manual:
           - src: '**/*.js'
             dest: .
+    - image: gcr.io/plat-demo/tickets
+      context: tickets
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: '**/*.ts'
+            dest: .
