@@ -2,6 +2,8 @@ import request from "supertest";
 import app from "../../app";
 import Ticket from "../../models/Ticket";
 
+jest.mock('../../__mocks__/nats-wrapper.ts')
+
 it("returns 200 if the route exist", async () => {
   const response = await request(app).post("/api/tickets").send({});
   expect(response.status).not.toEqual(404);

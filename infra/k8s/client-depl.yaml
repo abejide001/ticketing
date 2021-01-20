@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: client
-          image: gcr.io/plat-demo/client
+          image: abejide001/client
 ---
 apiVersion: v1
 kind: Service
